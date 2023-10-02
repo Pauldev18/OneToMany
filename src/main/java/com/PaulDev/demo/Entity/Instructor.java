@@ -2,6 +2,8 @@ package com.PaulDev.demo.Entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="instructor")
 public class Instructor {
@@ -59,11 +61,14 @@ public class Instructor {
     public void setEmail(String email) {
         this.email = email;
     }
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name= "instructor_detail_id")
     public InstructorDetail getInstructorDetail() {
         return instructorDetail;
     }
+    @OneToMany( mappedBy = "instructor", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 
+    private List<Course> courses;
     public void setInstructorDetail(InstructorDetail instructorDetail) {
         this.instructorDetail = instructorDetail;
     }
@@ -77,5 +82,13 @@ public class Instructor {
                 ", email='" + email + '\'' +
                 ", instructorDetail=" + instructorDetail +
                 '}';
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 }
