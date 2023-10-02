@@ -24,6 +24,30 @@ public class Course {
         TieuDe = tieuDe;
     }
 
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
+
+    public String getTieuDe() {
+        return TieuDe;
+    }
+
+    public void setTieuDe(String tieuDe) {
+        TieuDe = tieuDe;
+    }
+
+    public Instructor getInstructor() {
+        return instructor;
+    }
+
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
+    }
+
     @Override
     public String toString() {
         return "Course{" +
